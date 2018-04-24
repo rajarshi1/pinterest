@@ -1,0 +1,42 @@
+<template name="pinContainer">
+    <div class="grid">
+        {{#each pins}}
+            <div class="grid-item thumbnail">
+                {{#with FS.GetFile "images" image}}
+                    <img src="{{url}}" class="img-responsive pin-image" data-pin-image/>
+                {{/with}}
+                <div class="caption">
+                    <h4>{{title}}</h4>
+
+                    <p>{{description}}</p>
+                    <hr/>
+                    <p>
+
+                    <div class="remove-confirmation" data-id="{{_id}}"></div>
+                    <button class="btn btn-default" data-toggle-favorite>
+                        {{#if isFavorite}}
+                            <i class="glyphicon glyphicon-heart"></i>
+                        {{else}}
+                            <i class="glyphicon glyphicon-heart-empty"></i>
+                        {{/if}}
+                    </button>
+                    {{#if isMine}}
+                        <button class="btn btn-default" data-delete><i class="glyphicon glyphicon-trash"></i></button>
+                    {{/if}}
+                    </p>
+                    <p>
+                        {{#each tags}}
+                            <a href="{{pathFor route="search" data=searchTag}}"><span class="label label-primary">{{this}}</span></a>
+                        {{/each}}
+                    </p>
+                    <hr/>
+                    <p>
+                        {{> userPin userId=userId}}
+                    </p>
+                </div>
+            </div>
+        {{else}}
+            <h4 class="text-muted">I am hungry. <a href="{{pathFor route="newPin"}}">Feed me pins</a>!</h4>
+        {{/each}}
+    </div>
+</template>

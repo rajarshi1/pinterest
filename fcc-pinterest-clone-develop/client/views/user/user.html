@@ -1,0 +1,29 @@
+<template name="user">
+    <div class="row">
+        <div class="col-md-12">
+            <fieldet>
+                <legend>Pins from {{user.profile.name}}</legend>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#all-pins" aria-controls="all-pins" role="tab" data-toggle="tab">All</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#fav-pins" aria-controls="fav-pins" role="tab" data-toggle="tab">Favorite</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="all-pins">
+                        {{> pinContainer pins=pins}}
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="fav-pins">
+                        {{#with favoratePins}}
+                            {{> pinContainer pins=this}}
+                        {{else}}
+                            <h4 class="text-muted">No favorites found.</h4>
+                        {{/with}}
+                    </div>
+                </div>
+            </fieldet>
+        </div>
+    </div>
+</template>

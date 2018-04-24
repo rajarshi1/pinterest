@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+    .navbar-form .form-group {
+        width: 70%;
+    }
+
+    .navbar-form .input-group {
+        width: 100%;
+    }
+}
+
+
